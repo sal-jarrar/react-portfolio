@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import resume from "../assets/resume.pdf";
 import { Link } from "react-scroll";
 
-const Navbar = () => {
+const Navbar = ({ section, setSection }) => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+
+  const handlePage = (page) => {
+    localStorage.setItem("page", page);
+  };
+
+  useEffect(() => {
+    const page = localStorage.getItem("page");
+    setSection(page);
+  }, []);
 
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
@@ -17,28 +26,89 @@ const Navbar = () => {
 
       {/* menu */}
       <ul className="hidden md:flex">
-        <li>
-          <Link to="home" smooth={true} duration={500}>
+        <li
+          className={` ${
+            section === "home" ? "inline border-b-4 border-pink-600" : ""
+          }`}
+        >
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            activeClass="active"
+            onClick={() => {
+              setSection("home");
+              handlePage("home");
+            }}
+          >
             Home
           </Link>
         </li>
-        <li>
-          <Link to="about" smooth={true} duration={500}>
+        <li
+          className={` ${
+            section === "about" ? "inline border-b-4 border-pink-600" : ""
+          }`}
+        >
+          <Link
+            to="about"
+            smooth={true}
+            duration={500}
+            onClick={() => {
+              setSection("about");
+              handlePage("about");
+            }}
+          >
             About
           </Link>
         </li>
-        <li>
-          <Link to="skills" smooth={true} duration={500}>
+        <li
+          className={` ${
+            section === "skills" ? "inline border-b-4 border-pink-600" : ""
+          }`}
+        >
+          <Link
+            to="skills"
+            smooth={true}
+            duration={500}
+            onClick={() => {
+              setSection("skills");
+              handlePage("skills");
+            }}
+          >
             Skills
           </Link>
         </li>
-        <li>
-          <Link to="work" smooth={true} duration={500}>
+        <li
+          className={` ${
+            section === "work" ? "inline border-b-4 border-pink-600" : ""
+          }`}
+        >
+          <Link
+            to="work"
+            smooth={true}
+            duration={500}
+            onClick={() => {
+              setSection("work");
+              handlePage("work");
+            }}
+          >
             Work
           </Link>
         </li>
-        <li>
-          <Link to="contact" smooth={true} duration={500}>
+        <li
+          className={` ${
+            section === "contact" ? "inline border-b-4 border-pink-600" : ""
+          }`}
+        >
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            onClick={() => {
+              setSection("contact");
+              handlePage("contact");
+            }}
+          >
             Contact
           </Link>
         </li>
