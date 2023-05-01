@@ -16,8 +16,7 @@ const Contact = () => {
             Contact
           </p>
           <p className="text-gray-300 py-4">
-            // Submit the form below or shoot me an email -
-            vutukuri.kumar192st.niituniversity.in
+            // Submit the form below or shoot me an email - jarrarsal@gmail.com
           </p>
         </div>
         <input
